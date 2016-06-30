@@ -11,6 +11,8 @@ def csv_from_excel():
     wr = csv.writer(your_csv_file, quoting=csv.QUOTE_ALL)
 
     for rownum in xrange(sh.nrows):
-        wr.writerow(sh.row_values(rownum))
+        wr.writerow([unicode(entry).encode("utf-8") for entry in sh.row_values(rownum)])
 
     your_csv_file.close()
+
+csv_from_excel()
